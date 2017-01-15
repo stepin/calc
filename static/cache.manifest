@@ -1,0 +1,13 @@
+CACHE MANIFEST
+# Cache manifest version 0.0.1
+# The file must be served with a MIME type of text/cache-manifest.
+
+css/app.65d0a405d6923caa149949a3bfe95366.css
+css/app.65d0a405d6923caa149949a3bfe95366.css.map
+
+js/app.ca6a785b3d9d8b8be73c.js
+js/app.ca6a785b3d9d8b8be73c.js.map
+js/manifest.ba29e8e7d85166f0b6c5.js
+js/manifest.ba29e8e7d85166f0b6c5.js.map
+js/vendor.4f7e9f4c3e83adb6fb4d.js
+js/vendor.4f7e9f4c3e83adb6fb4d.js.map
