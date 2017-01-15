@@ -1,40 +1,40 @@
 <template>
   <div class="calculator">
-    <div class="line">
-      <button>{{ msg }}</button>
+    <div class="line display">
+      <div class="expression">{{ line }}</div>
+    </div>
+    <div class="line display">
+      <div class="result">{{ result }}</div>
     </div>
     <div class="line">
-      <button>{{ msg }}</button>
+      <button class="operation">C/CA</button>
+      <button class="operation">&larr;</button>
+      <button class="operation">rand</button>
+      <button class="operation">&divide;</button>
     </div>
     <div class="line">
-      <button>C/CA</button>
-      <button>&larr;</button>
-      <button>rand</button>
-      <button>&divide;</button>
+      <button class="number">7</button>
+      <button class="number">8</button>
+      <button class="number">9</button>
+      <button class="operation">&#10005;</button>
     </div>
     <div class="line">
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-      <button>&#10005;</button>
+      <button class="number">4</button>
+      <button class="number">5</button>
+      <button class="number">6</button>
+      <button class="operation">-</button>
     </div>
     <div class="line">
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>-</button>
+      <button class="number">1</button>
+      <button class="number">2</button>
+      <button class="number">3</button>
+      <button class="operation">+</button>
     </div>
     <div class="line">
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>+</button>
-    </div>
-    <div class="line">
-      <button>,</button>
-      <button>0</button>
-      <button>&plusmn;</button>
-      <button>=</button>
+      <button class="number">,</button>
+      <button class="number">0</button>
+      <button class="number">&plusmn;</button>
+      <button class="operation">=</button>
     </div>
   </div>
 </template>
@@ -44,7 +44,8 @@ export default {
   name: 'calculator',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      result: '5',
+      line: '23 - 3 / 4'
     }
   }
 }
@@ -53,20 +54,42 @@ export default {
 <style scoped>
 .calculator {
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
   width: 100%;
   height: 100%;
-  background: blue;
 }
 
 .line {
+  flex: 1 1 0;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background: green;
+  flex-flow: row nowrap;
 }
 
+.operation {
+  background: #999;
+}
+
+.number {
+  background: #eee;
+}
 button {
-  background: gray;
+  flex: 1 1 0;
+  font-size: 2em;
+}
+
+.display {
+  justify-content: flex-end;
+  align-items: center;
+}
+.expression {
+  flex: 0 1 auto;
+  font-size: 3em;
+  margin-right: 0.5em;
+  vertical-align: middle;
+}
+.result {
+  flex: 0 1 auto;
+  font-size: 3em;
+  margin-right: 0.5em;
 }
 </style>
