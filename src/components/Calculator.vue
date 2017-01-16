@@ -13,26 +13,26 @@
       <button class="operation">&divide;</button>
     </div>
     <div class="line">
-      <button class="number">7</button>
-      <button class="number">8</button>
-      <button class="number">9</button>
+      <button class="number" @click="number(7)">7</button>
+      <button class="number" @click="number(8)">8</button>
+      <button class="number" @click="number(9)">9</button>
       <button class="operation">&times;</button>
     </div>
     <div class="line">
-      <button class="number">4</button>
-      <button class="number">5</button>
-      <button class="number">6</button>
+      <button class="number" @click="number(4)">4</button>
+      <button class="number" @click="number(5)">5</button>
+      <button class="number" @click="number(6)">6</button>
       <button class="operation">&minus;</button>
     </div>
     <div class="line">
-      <button class="number">1</button>
-      <button class="number">2</button>
-      <button class="number">3</button>
+      <button class="number" @click="number(1)">1</button>
+      <button class="number" @click="number(2)">2</button>
+      <button class="number" @click="number(3)">3</button>
       <button class="operation">+</button>
     </div>
     <div class="line">
       <button class="number">,</button>
-      <button class="number">0</button>
+      <button class="number" @click="number(0)">0</button>
       <button class="number">&plusmn;</button>
       <button class="operation">=</button>
     </div>
@@ -46,6 +46,11 @@ export default {
     return {
       result: '5',
       line: '23 - 3 / 4'
+    }
+  },
+  methods: {
+    number: function (value) {
+      this.line = value
     }
   }
 }
