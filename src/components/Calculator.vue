@@ -95,8 +95,8 @@ button {
   margin-right: 0.5em;
 }
 
-//iphone 5
-@media only screen and (max-device-width : 568px){
+/*iphone 5*/
+@media only screen and (max-device-width: 568px){
   button {
     font-size: 1.4em;
   }
