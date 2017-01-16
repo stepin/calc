@@ -79,7 +79,11 @@ var webpackConfig = merge(baseWebpackConfig, {
       name: 'manifest',
       chunks: ['vendor']
     }),
-    new OfflinePlugin()
+    new OfflinePlugin({
+      AppCache: {
+        NETWORK: null
+      }
+    })
   ]
 })
 
