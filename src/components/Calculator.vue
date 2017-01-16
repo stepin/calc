@@ -124,7 +124,7 @@ export default {
       this.prevExpressionLine = ''
     },
     random: function () {
-      this.curNumberStr = '' + Math.random()
+      this.curNumberStr = '' + Math.random().toFixed(2)
     },
     operation: function (value) {
       this.prevResult = this.result
