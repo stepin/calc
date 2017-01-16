@@ -7,22 +7,22 @@
       <div class="result">{{ result }}</div>
     </div>
     <div class="line">
-      <button class="operation">C/CA</button>
+      <button class="operation">CA</button>
       <button class="operation">&larr;</button>
-      <button class="operation">rand</button>
+      <button class="operation">&forall;</button>
       <button class="operation">&divide;</button>
     </div>
     <div class="line">
       <button class="number">7</button>
       <button class="number">8</button>
       <button class="number">9</button>
-      <button class="operation">&#10005;</button>
+      <button class="operation">&times;</button>
     </div>
     <div class="line">
       <button class="number">4</button>
       <button class="number">5</button>
       <button class="number">6</button>
-      <button class="operation">-</button>
+      <button class="operation">&minus;</button>
     </div>
     <div class="line">
       <button class="number">1</button>
@@ -80,6 +80,8 @@ button {
 .display {
   justify-content: flex-end;
   align-items: center;
+  background: #000;
+  color: #fff;
 }
 .expression {
   flex: 0 1 auto;
@@ -91,5 +93,12 @@ button {
   flex: 0 1 auto;
   font-size: 3em;
   margin-right: 0.5em;
+}
+
+//iphone 5
+@media only screen and (max-device-width : 568px){
+  button {
+    font-size: 1.4em;
+  }
 }
 </style>
