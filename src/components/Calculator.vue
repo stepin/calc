@@ -7,7 +7,7 @@
       <div class="result">{{ resultLine }}</div>
     </div>
     <div class="line">
-      <button class="operation" @click="clearAll()">CA</button>
+      <button class="operation btnCA" @click="clearAll()">CA</button>
       <button class="operation" @click="backspace()">&larr;</button>
       <button class="operation" @click="random()">&forall;</button>
       <button class="operation" @click="operation('/')">&divide;</button>
