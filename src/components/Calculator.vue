@@ -56,13 +56,13 @@ export default {
       return parseFloat(this.curNumberStr, 10)
     },
     expressionLine: function () {
-      if (this.curNumberStr === '0') {
-        return this.prevExpressionLine + ' ' + this.curOperation
-      }
       const curNumber = this.curNumber < 0 && this.curOperation !== '' ? `(${this.curNumberStr})` : this.curNumberStr
       return `${this.prevExpressionLine} ${this.curOperation} ${curNumber}`
     },
     expressionLinePretty: function () {
+      if (this.curNumberStr === '0') {
+        return this.prevExpressionLine + ' ' + this.curOperation
+      }
       return this.pretty('' + this.expressionLine)
     },
     resultLine: function () {
@@ -87,11 +87,12 @@ export default {
       if (this.curOperation === '/' && this.curNumber !== 0) {
         return this.prevResult / this.curNumber
       }
+      return this.prevResult
     }
   },
   methods: {
     pretty: function (str) {
-      return str.replace(/-/g, '−').replace(/\./g, ',').replace(/\//g, '÷')
+      return str.replace(/-/g, '−').replace(/\./g, ',').replace(/\//g, '÷').replace(/\*/g, '×')
     },
     number: function (value) {
       if (this.curNumberStr === '0') {
@@ -127,6 +128,9 @@ export default {
       this.curNumberStr = '' + Math.random().toFixed(2)
     },
     operation: function (value) {
+      if (this.curNumberStr === '0') {
+        return
+      }
       this.prevResult = this.result
       this.prevExpressionLine = this.expressionLine
       this.curNumberStr = '0'
@@ -134,7 +138,7 @@ export default {
       this.operationsCount += 1
     },
     equal: function () {
-      const curNumber = this.result
+      const curNumber = '' + this.result
       this.clearAll()
       this.curNumberStr = curNumber
     }
