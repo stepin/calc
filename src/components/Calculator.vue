@@ -1,10 +1,10 @@
 <template>
   <div class="calculator">
     <div class="line display">
-      <div class="expression">{{ expressionLinePretty }}</div>
+      <div class="expression">{{ expressionDisplay }}</div>
     </div>
     <div class="line display">
-      <div class="result">{{ resultLine }}</div>
+      <div class="result">{{ resultDisplay }}</div>
     </div>
     <div class="line">
       <button class="operation btnCA" @click="clearAll()">CA</button>
@@ -59,13 +59,13 @@ export default {
       const curNumber = this.curNumber < 0 && this.curOperation !== '' ? `(${this.curNumberStr})` : this.curNumberStr
       return `${this.prevExpressionLine} ${this.curOperation} ${curNumber}`
     },
-    expressionLinePretty: function () {
+    expressionDisplay: function () {
       if (this.curNumberStr === '0') {
         return this.prevExpressionLine + ' ' + this.curOperation
       }
       return this.pretty('' + this.expressionLine)
     },
-    resultLine: function () {
+    resultDisplay: function () {
       if (this.operationsCount === 0 || (this.operationsCount < 2 && this.curNumberStr === '0')) {
         return ''
       }
