@@ -33,6 +33,14 @@ describe('Calculator.vue', () => {
     expect(calc.pretty('1*2')).to.equal('1×2')
     expect(calc.pretty('1/2')).to.equal('1÷2')
     expect(calc.pretty('1.2')).to.equal('1,2')
+
+    expect(calc.pretty('1+2+3')).to.equal('1+2+3')
+    expect(calc.pretty('1-2-2')).to.equal('1−2−2')
+    expect(calc.pretty('1*2*2')).to.equal('1×2×2')
+    expect(calc.pretty('1/2/2')).to.equal('1÷2÷2')
+    expect(calc.pretty('1.2-2.1')).to.equal('1,2−2,1')
+
+    expect(calc.pretty('1.2 + 2.1 - 1 / 2 * 3')).to.equal('1,2 + 2,1 − 1 ÷ 2 × 3')
   })
 
 })
