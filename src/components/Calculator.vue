@@ -131,6 +131,9 @@ export default {
       if (this.curNumberStr === '0') {
         return
       }
+      if (this.curNumberStr[this.curNumberStr.length - 1] === '.') {
+        this.curNumberStr = this.curNumberStr.slice(0, -1)
+      }
       this.prevResult = this.result
       this.prevExpressionLine = this.expressionLine
       this.curNumberStr = '0'
