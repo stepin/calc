@@ -8,33 +8,33 @@
     </div>
     <div class="line">
       <button class="operation btnCA" @click="clearAll()">CA</button>
-      <button class="operation" @click="backspace()">&larr;</button>
-      <button class="operation" @click="random()">&forall;</button>
-      <button class="operation" @click="operation('/')">&divide;</button>
+      <button class="operation btnBackspace" @click="backspace()">&larr;</button>
+      <button class="operation btnRandon" @click="random()">&forall;</button>
+      <button class="operation btnDivide" @click="operation('/')">&divide;</button>
     </div>
     <div class="line">
-      <button class="number" @click="number(7)">7</button>
-      <button class="number" @click="number(8)">8</button>
-      <button class="number" @click="number(9)">9</button>
-      <button class="operation" @click="operation('*')">&times;</button>
+      <button class="number btn7" @click="number(7)">7</button>
+      <button class="number btn8" @click="number(8)">8</button>
+      <button class="number btn9" @click="number(9)">9</button>
+      <button class="operation btnMultiply" @click="operation('*')">&times;</button>
     </div>
     <div class="line">
-      <button class="number" @click="number(4)">4</button>
-      <button class="number" @click="number(5)">5</button>
-      <button class="number" @click="number(6)">6</button>
-      <button class="operation" @click="operation('-')">&minus;</button>
+      <button class="number btn4" @click="number(4)">4</button>
+      <button class="number btn5" @click="number(5)">5</button>
+      <button class="number btn6" @click="number(6)">6</button>
+      <button class="operation btnMinus" @click="operation('-')">&minus;</button>
     </div>
     <div class="line">
-      <button class="number" @click="number(1)">1</button>
-      <button class="number" @click="number(2)">2</button>
-      <button class="number" @click="number(3)">3</button>
-      <button class="operation" @click="operation('+')">+</button>
+      <button class="number btn1" @click="number(1)">1</button>
+      <button class="number btn2" @click="number(2)">2</button>
+      <button class="number btn3" @click="number(3)">3</button>
+      <button class="operation btnPlus" @click="operation('+')">+</button>
     </div>
     <div class="line">
-      <button class="number" @click="period()">,</button>
-      <button class="number" @click="number(0)">0</button>
-      <button class="number" @click="sign()">&plusmn;</button>
-      <button class="operation" @click="equal()">=</button>
+      <button class="number btnPeriod" @click="period()">,</button>
+      <button class="number btn0" @click="number(0)">0</button>
+      <button class="number btnSign" @click="sign()">&plusmn;</button>
+      <button class="operation btnEqual" @click="equal()">=</button>
     </div>
   </div>
 </template>
