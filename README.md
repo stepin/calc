@@ -2,6 +2,13 @@
 
 > PWA Calculator
 
+## Tools
+
+* Online Image Editor https://pixlr.com/editor/
+* Fav Icon Generator http://realfavicongenerator.net
+* ngrok https://ngrok.com/download
+* toggl https://toggl.com/
+
 ## Build Setup
 
 ``` bash
