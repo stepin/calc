@@ -48,7 +48,7 @@ function expression (clicks, expressionDisplay, resultDisplay, browser, devServe
     .assert.elementPresent('.calculator')
   for (var i = 0, len = clicks.length; i < len; i++) {
     const selector = '.btn' + toCssClass(clicks[i])
-    browser.waitForElementVisible(selector, 100)
+    browser.waitForElementVisible(selector, 200)
     browser.click(selector);
   }
   if (expressionDisplay !== null) {
@@ -107,13 +107,13 @@ module.exports = {
     expression('1-', '1 -', '', browser, devServer)
     expression('1*', '1 *', '', browser, devServer)
     expression('1/', '1 /', '', browser, devServer)
-    expression('1S', '(-1)', '', browser, devServer)
+    expression('1S', '-1', '', browser, devServer)
     expression('1.', '1.', '', browser, devServer)
     expression('1C', '', '', browser, devServer)
     expression('1B', '', '', browser, devServer)
     expression('12C', '', '', browser, devServer)
     expression('12B', '1', '', browser, devServer)
-    expression('1=', '1', '1', browser, devServer)
+    expression('1=', '1', '', browser, devServer)
 
     browser.end()
   },
@@ -137,7 +137,7 @@ module.exports = {
     expression('12CC', '', '', browser, devServer)
     expression('12BB', '', '', browser, devServer)
     expression('123BB', '1', '', browser, devServer)
-    expression('1==', '1', '1', browser, devServer)
+    expression('1==', '1', '', browser, devServer)
 
     browser.end()
   },
@@ -163,10 +163,10 @@ module.exports = {
     expression('1*2+1', '1 * 2 + 1', '3', browser, devServer)
     expression('1/2*3', '1 / 2 * 3', '1.5', browser, devServer)
     expression('1+2S+5', '1 + (-2) + 5', '4', browser, devServer)
-    expression('1.2 + 2', '1.2 + 2', '3.2', browser, devServer)
+    expression('1.2+2', '1.2 + 2', '3.2', browser, devServer)
     expression('1+2/3C', '', '', browser, devServer)
     expression('1+2-3=', '', '', browser, devServer)
-    expression('1+2-4=', '(-1)', '', browser, devServer)
+    expression('1+2-4=', '-1', '', browser, devServer)
 
     browser.end()
   },
@@ -182,17 +182,16 @@ module.exports = {
     expression('0C', '', '', browser, devServer)
     expression('0B', '', '', browser, devServer)
     expression('0S', '', '', browser, devServer)
-    expression('0.', '0,', '', browser, devServer)
+    expression('0.', '0.', '', browser, devServer)
 
     browser.end()
   },
   'edge cases': function (browser) {
     const devServer = browser.globals.devServerURL
 
-    expression('1,+', '1 +', '', browser, devServer)
-    expression('1,+2,3', '1 + 2.3', '3.3', browser, devServer)
-    expression('1,1+2,3', '1.1 + 2.3', '3.4', browser, devServer)
-
+    expression('1.+', '1 +', '', browser, devServer)
+    expression('1.+2.3', '1 + 2.3', '3.3', browser, devServer)
+    expression('1.1+2.3', '1.1 + 2.3', '3.4', browser, devServer)
 
     expression('3+2*', '3 + 2 *', '', browser, devServer)
     expression('4+2B', '4 +', '', browser, devServer)

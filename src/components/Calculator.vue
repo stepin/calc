@@ -61,7 +61,7 @@ export default {
     },
     expressionDisplay: function () {
       if (this.curNumberStr === '0') {
-        return this.prevExpressionLine + ' ' + this.curOperation
+        return this.pretty(this.prevExpressionLine + ' ' + this.curOperation)
       }
       return this.pretty('' + this.expressionLine)
     },
