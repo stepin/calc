@@ -198,6 +198,8 @@ module.exports = {
     expression('2+3=99', '599', '', browser, devServer)
     expression('/=', '', '', browser, devServer)
 
+    expression('./', '0.', '', browser, devServer)
+
     browser.end()
   }
 }
