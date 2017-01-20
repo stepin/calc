@@ -34,8 +34,9 @@ build:
     - script:
         name: install java
         code: |-
-          sudo apt-get --assume-yes install default-jre
-          # sudo apt-get --assume-yes install default-jdk
+          echo deb http://http.debian.net/debian jessie-backports main >> /etc/apt/sources.list
+          apt-get update && apt-get install openjdk-8-jdk
+          update-alternatives --config java
     - script:
         name: test java
         code: |-
