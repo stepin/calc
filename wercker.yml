@@ -35,7 +35,7 @@ build:
         name: install java
         code: |-
           echo deb http://http.debian.net/debian jessie-backports main >> /etc/apt/sources.list
-          apt-get update && apt-get install openjdk-8-jdk
+          apt-get -y update && apt-get -y install openjdk-8-jdk
           update-alternatives --config java
     - script:
         name: test java
