@@ -23,38 +23,42 @@ build:
   # http://devcenter.wercker.com/docs/steps/index.html
   steps:
     #Firefox, Java and xvfb for e2e tests
-    - script:
-        name: install firefox
-        code: |-
+#    - script:
+#        name: install firefox
+#        code: |-
           # sudo apt-get install --assume-yes build-essential curl wget libfreetype6-dev libfontconfig1-dev xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps
-          cd /usr/local
-          wget http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-x86_64/en-US/firefox-50.1.0.tar.bz2
-          tar xvjf firefox-50.1.0.tar.bz2
-          sudo ln -s /usr/local/firefox/firefox /usr/bin/firefox
-    - script:
-        name: install java
-        code: |-
-          echo deb http://http.debian.net/debian jessie-backports main >> /etc/apt/sources.list
-          apt-get -y update && apt-get -y install openjdk-8-jdk
-          update-alternatives --config java
-    - script:
-        name: test java
-        code: |-
-          type java || { echo "I expected java to be available after oracle-java7-installer installation. Aborting."; exit 1; }
-    - script:
-        name: start virtual display xvfb
-        code: |-
-          sudo apt-get --assume-yes install xvfb -y
-          sleep 15
-          export DISPLAY=:99.0
-          sudo start-stop-daemon --start --quiet --pidfile /tmp/xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset
-          sleep 15
-          xdpyinfo -display :0 >/dev/null 2>&1 && echo "In use" || echo "Free"
+#          cd /usr/local
+#          wget http://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-x86_64/en-US/firefox-50.1.0.tar.bz2
+#          tar xvjf firefox-50.1.0.tar.bz2
+#          sudo ln -s /usr/local/firefox/firefox /usr/bin/firefox
+#    - script:
+#        name: install java
+#        code: |-
+#          echo deb http://http.debian.net/debian jessie-backports main >> /etc/apt/sources.list
+#          apt-get -y update && apt-get -y install openjdk-8-jdk
+#          update-alternatives --config java
+#    - script:
+#        name: test java
+#        code: |-
+#          type java || { echo "I expected java to be available after oracle-java7-installer installation. Aborting."; exit 1; }
+#    - script:
+#        name: start virtual display xvfb
+#        code: |-
+#          sudo apt-get --assume-yes install xvfb -y
+#          sleep 15
+#          export DISPLAY=:99.0
+#          sudo start-stop-daemon --start --quiet --pidfile /tmp/xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset
+#          sleep 15
+#          xdpyinfo -display :0 >/dev/null 2>&1 && echo "In use" || echo "Free"
 
     # A step that executes `npm install` command
     - npm-install
     # A step that executes `npm test` command
-    - npm-test
+#    - npm-test
+    - script:
+        name: npm run unit
+        code: |
+          node run unit
 
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
