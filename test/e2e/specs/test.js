@@ -1,5 +1,8 @@
 // For authoring Nightwatch tests, see
 // http://nightwatchjs.org/guide#usage
+//
+// http://nightwatchjs.org/api#commands
+// https://nodejs.org/api/assert.html
 
 function pretty (str) {
   return str.replace(/-/g, '−').replace(/\./g, ',').replace(/\//g, '÷').replace(/\*/g, '×')
@@ -69,6 +72,64 @@ module.exports = {
 
     browser.end()
   },
+  'edge cases': function (browser) {
+    const devServer = browser.globals.devServerURL
+
+    // expression('./', '0.', '', browser, devServer)
+    // expression('2+B', '2 +', '', browser, devServer)
+
+    expression('1.+', '1 +', '', browser, devServer)
+    expression('1.+2.3', '1 + 2.3', '3.3', browser, devServer)
+    expression('1.1+2.3', '1.1 + 2.3', '3.4', browser, devServer)
+
+    expression('3+2*', '3 + 2 *', '', browser, devServer)
+    expression('4+2B', '4 +', '', browser, devServer)
+    expression('2+3=99', '599', '', browser, devServer)
+    expression('/=', '', '', browser, devServer)
+
+    browser.end()
+  },
+  'random': function (browser) {
+    const devServer = browser.globals.devServerURL
+
+    var r1, r2, r3
+
+    expression('R', null, '', browser, devServer)
+    browser.getText('.expression', function(result) {
+      this.assert.equal(typeof result, 'object')
+      this.assert.equal(result.status, 0)
+      const value = result.value
+      this.assert.equal(typeof value, 'string')
+      this.assert.ok(value.search(/0,\d\d/) !== -1 , 'Check random number format, ' + value)
+      r1 = value
+    })
+
+    expression('R', null, '', browser, devServer)
+    browser.getText('.expression', function(result) {
+      this.assert.equal(typeof result, 'object')
+      this.assert.equal(result.status, 0)
+      const value = result.value
+      this.assert.equal(typeof value, 'string')
+      this.assert.ok(value.search(/0,\d\d/) !== -1 , 'Check random number format, ' + value)
+      r2 = value
+    })
+
+    expression('R', null, '', browser, devServer)
+    browser.getText('.expression', function(result) {
+      this.assert.equal(typeof result, 'object')
+      this.assert.equal(result.status, 0)
+      const value = result.value
+      this.assert.equal(typeof value, 'string')
+      this.assert.ok(value.search(/0,\d\d/) !== -1 , 'Check random number format, ' + value)
+      r3 = value
+    })
+
+    browser.perform(function () {
+      this.client.api.assert.ok(r1 !== r2 || r2 !== r3 || r1 !== r3, 'different random numbers')
+    })
+
+    browser.end()
+  },
   'one button': function (browser) {
     const devServer = browser.globals.devServerURL
 
@@ -85,7 +146,13 @@ module.exports = {
     expression('01', '1', '', browser, devServer)
 
     expression('R', null, '', browser, devServer)
-    //  .assert.containsText('.expression', expressionDisplay)
+    browser.getText('.expression', function(result) {
+      this.assert.equal(typeof result, 'object')
+      this.assert.equal(result.status, 0)
+      const value = result.value
+      this.assert.equal(typeof value, 'string')
+      this.assert.ok(value.search(/0,\d\d/) !== -1 , 'Check random number format, ' + value)
+    })
 
     expression('C', '', '', browser, devServer)
     expression('B', '', '', browser, devServer)
@@ -102,7 +169,14 @@ module.exports = {
   'button + operation': function (browser) {
     const devServer = browser.globals.devServerURL
 
-    //expression('1R', null, '', browser, devServer)
+    expression('1R', null, '', browser, devServer)
+    browser.getText('.expression', function(result) {
+      this.assert.equal(typeof result, 'object')
+      this.assert.equal(result.status, 0)
+      const value = result.value
+      this.assert.equal(typeof value, 'string')
+      this.assert.ok(value.search(/0,\d\d/) !== -1 , 'Check random number format, ' + value)
+    })
     expression('1+', '1 +', '', browser, devServer)
     expression('1-', '1 -', '', browser, devServer)
     expression('1*', '1 *', '', browser, devServer)
@@ -121,10 +195,13 @@ module.exports = {
     const devServer = browser.globals.devServerURL
 
     expression('1RR', null, '', browser, devServer)
-    //TODO: castom assert for random
-    //  .assert.containsText('.expression', expressionDisplay)
-
-    //expression('1R', null, '', browser, devServer)
+    browser.getText('.expression', function(result) {
+      this.assert.equal(typeof result, 'object')
+      this.assert.equal(result.status, 0)
+      const value = result.value
+      this.assert.equal(typeof value, 'string')
+      this.assert.ok(value.search(/0,\d\d/) !== -1 , 'Check random number format, ' + value)
+    })
     expression('1+*', '1 +', '', browser, devServer)
     expression('1-/', '1 -', '', browser, devServer)
     expression('1*-', '1 *', '', browser, devServer)
@@ -183,22 +260,6 @@ module.exports = {
     expression('0B', '', '', browser, devServer)
     expression('0S', '', '', browser, devServer)
     expression('0.', '0.', '', browser, devServer)
-
-    browser.end()
-  },
-  'edge cases': function (browser) {
-    const devServer = browser.globals.devServerURL
-
-    expression('1.+', '1 +', '', browser, devServer)
-    expression('1.+2.3', '1 + 2.3', '3.3', browser, devServer)
-    expression('1.1+2.3', '1.1 + 2.3', '3.4', browser, devServer)
-
-    expression('3+2*', '3 + 2 *', '', browser, devServer)
-    expression('4+2B', '4 +', '', browser, devServer)
-    expression('2+3=99', '599', '', browser, devServer)
-    expression('/=', '', '', browser, devServer)
-
-    expression('./', '0.', '', browser, devServer)
 
     browser.end()
   }
