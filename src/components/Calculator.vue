@@ -44,7 +44,7 @@ export default {
   name: 'calculator',
   data () {
     return {
-      curNumberStr: '0',
+      curNumberStr: '',
       curOperation: '',
       operationsCount: 0,
       prevResult: 0,
@@ -53,6 +53,9 @@ export default {
   },
   computed: {
     curNumber: function () {
+      if (this.curNumberStr === '') {
+        return 0
+      }
       return parseFloat(this.curNumberStr, 10)
     },
     expressionLine: function () {
@@ -60,13 +63,13 @@ export default {
       return `${this.prevExpressionLine} ${this.curOperation} ${curNumber}`
     },
     expressionDisplay: function () {
-      if (this.curNumberStr === '0') {
+      if (this.curNumber === 0 && this.curNumberStr.indexOf('.') === -1) {
         return this.pretty(this.prevExpressionLine + ' ' + this.curOperation)
       }
       return this.pretty('' + this.expressionLine)
     },
     resultDisplay: function () {
-      if (this.operationsCount === 0 || (this.operationsCount < 2 && this.curNumberStr === '0')) {
+      if (this.operationsCount === 0 || this.curNumber === 0) {
         return ''
       }
       return this.pretty('' + this.result)
@@ -112,13 +115,16 @@ export default {
       if (this.curNumberStr.indexOf('.') !== -1) {
         return
       }
+      if (this.curNumberStr === '') {
+        this.curNumberStr = '0'
+      }
       this.curNumberStr = this.curNumberStr + '.'
     },
     backspace: function () {
       this.curNumberStr = this.curNumberStr.slice(0, -1)
     },
     clearAll: function () {
-      this.curNumberStr = '0'
+      this.curNumberStr = ''
       this.curOperation = ''
       this.operationsCount = 0
       this.prevResult = 0
@@ -136,7 +142,7 @@ export default {
       }
       this.prevResult = this.result
       this.prevExpressionLine = this.expressionLine
-      this.curNumberStr = '0'
+      this.curNumberStr = ''
       this.curOperation = value
       this.operationsCount += 1
     },

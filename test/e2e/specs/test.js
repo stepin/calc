@@ -42,6 +42,17 @@ function toCssClass (char) {
   return char
 }
 
+function equalText (selector, expected, browser) {
+  browser.getText(selector, function(result) {
+    this.assert.equal(typeof result, 'object')
+    this.assert.equal(result.status, 0)
+    let value = result.value
+    this.assert.equal(typeof value, 'string')
+    value = value.trim()
+    this.assert.equal(expected, value)
+  })
+}
+
 function expression (clicks, expressionDisplay, resultDisplay, browser, devServer) {
   expressionDisplay = expressionDisplay === null ? null : pretty(expressionDisplay)
   resultDisplay = pretty(resultDisplay)
@@ -55,9 +66,9 @@ function expression (clicks, expressionDisplay, resultDisplay, browser, devServe
     browser.click(selector);
   }
   if (expressionDisplay !== null) {
-    browser.assert.containsText('.expression', expressionDisplay)
+    equalText('.expression', expressionDisplay, browser)
   }
-  browser.assert.containsText('.result', resultDisplay)
+  equalText('.result', resultDisplay, browser)
   return browser
 }
 
