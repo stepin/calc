@@ -128,7 +128,7 @@ export default {
       this.curNumberStr = '' + Math.random().toFixed(2)
     },
     operation: function (value) {
-      if (this.curNumberStr === '0') {
+      if (this.curNumber === 0) {
         return
       }
       if (this.curNumberStr[this.curNumberStr.length - 1] === '.') {

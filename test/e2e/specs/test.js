@@ -75,8 +75,8 @@ module.exports = {
   'edge cases': function (browser) {
     const devServer = browser.globals.devServerURL
 
-    // expression('./', '0.', '', browser, devServer)
-    // expression('2+B', '2 +', '', browser, devServer)
+    expression('./', '0.', '', browser, devServer)
+    expression('2+B', '2 +', '', browser, devServer)
 
     expression('1.+', '1 +', '', browser, devServer)
     expression('1.+2.3', '1 + 2.3', '3.3', browser, devServer)
