@@ -14,7 +14,7 @@ describe('Calculator.vue', () => {
   it('sets the correct default data', () => {
     expect(Calculator.data).to.be.a('function')
     const defaultData = Calculator.data()
-    expect(defaultData.curNumberStr).to.equal('0')
+    expect(defaultData.curNumberStr).to.equal('')
     expect(defaultData.curOperation).to.equal('')
     expect(defaultData.operationsCount).to.equal(0)
     expect(defaultData.prevResult).to.equal(0)
