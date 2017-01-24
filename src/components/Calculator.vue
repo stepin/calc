@@ -48,7 +48,8 @@ export default {
       curOperation: '',
       operationsCount: 0,
       prevResult: 0,
-      prevExpressionLine: ''
+      prevExpressionLine: '',
+      showVersion: false
     }
   },
   computed: {
@@ -63,12 +64,18 @@ export default {
       return `${this.prevExpressionLine} ${this.curOperation} ${curNumber}`
     },
     expressionDisplay: function () {
+      if (this.showVersion) {
+        return VERSION
+      }
       if (this.curNumber === 0 && this.curNumberStr.indexOf('.') === -1) {
         return this.pretty(this.prevExpressionLine + ' ' + this.curOperation)
       }
       return this.pretty('' + this.expressionLine)
     },
     resultDisplay: function () {
+      if (this.showVersion) {
+        return '' + new Date(BUILDDATE)
+      }
       if (this.operationsCount === 0 || this.curNumber === 0) {
         return ''
       }
@@ -132,9 +139,14 @@ export default {
       this.operationsCount = 0
       this.prevResult = 0
       this.prevExpressionLine = ''
+      this.showVersion = false
     },
     random: function () {
-      this.curNumberStr = '' + Math.random().toFixed(2)
+      if (this.expressionDisplay === '  27 + 1 − 1') {
+        this.showVersion = true
+      } else {
+        this.curNumberStr = '' + Math.random().toFixed(2)
+      }
     },
     operation: function (value) {
       if (this.curNumber === 0) {
