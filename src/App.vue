@@ -6,8 +6,9 @@
 
 <script>
 import Calculator from './components/Calculator'
-import addToHomescreen from 'add-to-homescreen/src/addtohomescreen.js'
+import {addToHomescreen} from 'add-to-homescreen/src/addtohomescreen.js'
 require('add-to-homescreen/style/addtohomescreen.css')
+import {attach as attachFastClick} from 'fastclick'
 
 const _ua = window.navigator.userAgent
 const _isIDevice = (/iphone|ipod|ipad/i).test(_ua)
@@ -16,7 +17,6 @@ if (isMobileSafari) {
   const isStandalone = 'standalone' in window.navigator && window.navigator.standalone
   if (isStandalone) {
     // enable fastclick
-    let attachFastClick = require('fastclick')
     attachFastClick(document.body)
   } else {
     // enable add to homescreen tip
