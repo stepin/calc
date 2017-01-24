@@ -72,7 +72,7 @@ export default {
       if (this.operationsCount === 0 || this.curNumber === 0) {
         return ''
       }
-      return this.pretty('' + this.result)
+      return this.pretty('' + this.round2(this.result))
     },
     result: function () {
       if (this.curOperation.length === 0) {
@@ -96,6 +96,9 @@ export default {
   methods: {
     pretty: function (str) {
       return str.replace(/-/g, '−').replace(/\./g, ',').replace(/\//g, '÷').replace(/\*/g, '×')
+    },
+    round2: function (value) {
+      return Math.round(value * 100) / 100
     },
     number: function (value) {
       if (this.curNumberStr === '0') {
