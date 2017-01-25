@@ -1,0 +1,7 @@
+calc:
+  build:
+    image: stepin/calc
+    dockerfile_path: Dockerfile
+  # Set environment variables to connect to the service you need for your build. Those environment variables can overwrite settings from your configuration files (e.g. database.yml) if configured. Make sure that your environment variables and configuration files work work together as expected.
+  environment:
+    - CODESHIP=1

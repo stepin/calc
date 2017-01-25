@@ -1,0 +1,7 @@
+- name: ci
+  type: parallel
+  steps:
+  - service: calc
+    command: npm run lint
+  - service: calc
+    command: npm run test
