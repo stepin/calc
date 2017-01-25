@@ -74,7 +74,7 @@ export default {
     },
     resultDisplay: function () {
       if (this.showVersion) {
-        return '' + new Date(BUILDDATE)
+        return new Date(BUILDDATE).toISOString()
       }
       if (this.operationsCount === 0 || this.curNumber === 0) {
         return ''

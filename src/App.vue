@@ -22,8 +22,8 @@ if (isMobileSafari) {
     // enable add to homescreen tip
     addToHomescreen({
       startDelay: 5,
-      skipFirstVisit: true
-
+      skipFirstVisit: true,
+      icon: false
     })
   }
 }
