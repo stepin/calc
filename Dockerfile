@@ -1,4 +1,4 @@
-FROM node:6
+FROM selenium/standalone-chrome
 
 # INSTALL any further tools you need here so they are cached in the docker build
 
