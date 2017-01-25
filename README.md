@@ -1,5 +1,8 @@
 # is-calculator
 
+[![wercker status](https://app.wercker.com/status/81f0ec055e1f5a5643415ad39221c849/s/master "wercker status")](https://app.wercker.com/project/byKey/81f0ec055e1f5a5643415ad39221c849)
+<a href="https://codeclimate.com/github/stepin/calc"><img src="https://codeclimate.com/github/stepin/calc/badges/issue_count.svg" /></a>
+
 > PWA Calculator
 
 ## Tools
