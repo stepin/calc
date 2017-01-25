@@ -5,3 +5,5 @@
     command: npm run lint
   - service: calc
     command: npm run test
+  - service: calc
+    command: npm run build
