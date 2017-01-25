@@ -42,5 +42,4 @@ describe('Calculator.vue', () => {
 
     expect(calc.pretty('1.2 + 2.1 - 1 / 2 * 3')).to.equal('1,2 + 2,1 − 1 ÷ 2 × 3')
   })
-
 })

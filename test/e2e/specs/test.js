@@ -43,7 +43,7 @@ function toCssClass (char) {
 }
 
 function equalText (selector, expected, browser) {
-  browser.getText(selector, function(result) {
+  browser.getText(selector, function (result) {
     this.assert.equal(typeof result, 'object')
     this.assert.equal(result.status, 0)
     let value = result.value
@@ -63,7 +63,7 @@ function expression (clicks, expressionDisplay, resultDisplay, browser, devServe
   for (var i = 0, len = clicks.length; i < len; i++) {
     const selector = '.btn' + toCssClass(clicks[i])
     browser.waitForElementVisible(selector, 200)
-    browser.click(selector);
+    browser.click(selector)
   }
   if (expressionDisplay !== null) {
     equalText('.expression', expressionDisplay, browser)
@@ -109,32 +109,32 @@ module.exports = {
     var r1, r2, r3
 
     expression('R', null, '', browser, devServer)
-    browser.getText('.expression', function(result) {
+    browser.getText('.expression', function (result) {
       this.assert.equal(typeof result, 'object')
       this.assert.equal(result.status, 0)
       const value = result.value
       this.assert.equal(typeof value, 'string')
-      this.assert.ok(value.search(/0,\d\d/) !== -1 , 'Check random number format, ' + value)
+      this.assert.ok(value.search(/0,\d\d/) !== -1, 'Check random number format, ' + value)
       r1 = value
     })
 
     expression('R', null, '', browser, devServer)
-    browser.getText('.expression', function(result) {
+    browser.getText('.expression', function (result) {
       this.assert.equal(typeof result, 'object')
       this.assert.equal(result.status, 0)
       const value = result.value
       this.assert.equal(typeof value, 'string')
-      this.assert.ok(value.search(/0,\d\d/) !== -1 , 'Check random number format, ' + value)
+      this.assert.ok(value.search(/0,\d\d/) !== -1, 'Check random number format, ' + value)
       r2 = value
     })
 
     expression('R', null, '', browser, devServer)
-    browser.getText('.expression', function(result) {
+    browser.getText('.expression', function (result) {
       this.assert.equal(typeof result, 'object')
       this.assert.equal(result.status, 0)
       const value = result.value
       this.assert.equal(typeof value, 'string')
-      this.assert.ok(value.search(/0,\d\d/) !== -1 , 'Check random number format, ' + value)
+      this.assert.ok(value.search(/0,\d\d/) !== -1, 'Check random number format, ' + value)
       r3 = value
     })
 
@@ -160,12 +160,12 @@ module.exports = {
     expression('01', '1', '', browser, devServer)
 
     expression('R', null, '', browser, devServer)
-    browser.getText('.expression', function(result) {
+    browser.getText('.expression', function (result) {
       this.assert.equal(typeof result, 'object')
       this.assert.equal(result.status, 0)
       const value = result.value
       this.assert.equal(typeof value, 'string')
-      this.assert.ok(value.search(/0,\d\d/) !== -1 , 'Check random number format, ' + value)
+      this.assert.ok(value.search(/0,\d\d/) !== -1, 'Check random number format, ' + value)
     })
 
     expression('C', '', '', browser, devServer)
@@ -184,12 +184,12 @@ module.exports = {
     const devServer = browser.globals.devServerURL
 
     expression('1R', null, '', browser, devServer)
-    browser.getText('.expression', function(result) {
+    browser.getText('.expression', function (result) {
       this.assert.equal(typeof result, 'object')
       this.assert.equal(result.status, 0)
       const value = result.value
       this.assert.equal(typeof value, 'string')
-      this.assert.ok(value.search(/0,\d\d/) !== -1 , 'Check random number format, ' + value)
+      this.assert.ok(value.search(/0,\d\d/) !== -1, 'Check random number format, ' + value)
     })
     expression('1+', '1 +', '', browser, devServer)
     expression('1-', '1 -', '', browser, devServer)
@@ -209,12 +209,12 @@ module.exports = {
     const devServer = browser.globals.devServerURL
 
     expression('1RR', null, '', browser, devServer)
-    browser.getText('.expression', function(result) {
+    browser.getText('.expression', function (result) {
       this.assert.equal(typeof result, 'object')
       this.assert.equal(result.status, 0)
       const value = result.value
       this.assert.equal(typeof value, 'string')
-      this.assert.ok(value.search(/0,\d\d/) !== -1 , 'Check random number format, ' + value)
+      this.assert.ok(value.search(/0,\d\d/) !== -1, 'Check random number format, ' + value)
     })
     expression('1+*', '1 +', '', browser, devServer)
     expression('1-/', '1 -', '', browser, devServer)
